@@ -1,0 +1,13 @@
+doctype html
+html
+  head
+    title= @title || "Login4tests"
+    link rel="stylesheet" href="css/bootstrap.min.css"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    /  jQuery (necessary for Bootstrap's JavaScript plugins)
+    script src="//code.jquery.com/jquery.js"
+    /  Include all compiled plugins (below), or include individual files as needed
+    script src="js/bootstrap.min.js"
+
+  body
+    == yield

@@ -1,0 +1,43 @@
+link href="css/home.css" rel="stylesheet"
+.container
+  .header
+    ul.nav.nav-pills.pull-right
+      li
+        a.btn.btn-info href="/" Home
+      li
+        - if session[:user]
+          a.btn.btn-default href="/logout" Logout
+        - else
+          a.btn.btn-default href="/login" Login
+    h3.text-muted Login 4 Tests
+  - if flash[:logged_in]
+    .alert.alert-success #{flash[:logged_in]}
+  - if flash[:logged_out]
+    .alert.alert-warning #{flash[:logged_out]}
+  .jumbotron
+    h1 Simple login
+    p.lead This is a simple application to test brute force attacks, with no security policies, as preventing Login Storm.
+    p
+        a.btn.btn-lg.btn-success target="_blank" href="https://github.com/VerAx1/login4tests"  Source Code
+  .row.marketing
+    .col-lg-6
+      h4 THC-Hydra
+      p
+        ' A very fast network logon cracker which support many different services. See feature sets and services coverage
+        a href="http://www.thc.org/thc-hydra/network_password_cracker_comparison.html" page
+        '  - incl. a speed comparison against ncrack and medusa
+    .col-lg-6
+      h4 Ncrack
+      p
+        '
+        a href="http://www.thc.org/thc-hydra/network_password_cracker_comparison.html" Ncrack
+        '
+        Ncrack is a high-speed network authentication cracking tool. It was built to help companies secure their networks by proactively testing all their hosts and networking devices for poor passwords.
+
+  .footer
+    p
+      ' &copy; Sebastian Vera 2013 -
+      a target="_blank" href="https://github.com/VerAx1" Github
+      '  -
+      a target="_blank" href="http://twitter.com/verax_" Twitter
+/! /container
