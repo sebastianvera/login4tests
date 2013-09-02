@@ -15,6 +15,7 @@ Run with:
 ```
  $ ruby web.rb
 ```
+View at: http://localhost:4567
 
 ### Requirements
 
