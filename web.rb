@@ -13,10 +13,11 @@ helpers do
    def logged?
       session[:user]
    end
-end
 
-before do
-   halt 401, "Jajajaja, not this time hydra" if request.env["HTTP_USER_AGENT"].match(/hydra/i) # Bye bye hydra
+   def is_not_hydra?
+      request.env["HTTP_USER_AGENT"].match(/hydra/i).nil?
+      true # Delete this line if you don't wanna let hydra's requests
+   end
 end
 
 get '/' do
@@ -33,7 +34,7 @@ get '/login' do
 end
 
 post '/login' do
-   if params[:username] == username && params[:password] == password
+   if params[:username] == username && params[:password] == password && is_not_hydra?
       session[:user] = true
       flash[:logged_in] = "You are now logged in!"
       redirect "/"
