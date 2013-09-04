@@ -4,7 +4,7 @@ require "sinatra/reloader" if development?
 require "sinatra/flash"
 require 'slim'
 
-enable "sessions"
+enable :sessions
 
 username="foo"
 password="bar"
@@ -13,6 +13,10 @@ helpers do
    def logged?
       session[:user]
    end
+end
+
+before do
+   halt 401, "Jajajaja, not this time hydra" if request.env["HTTP_USER_AGENT"].match(/hydra/i) # Bye bye hydra
 end
 
 get '/' do
@@ -44,4 +48,5 @@ get '/logout' do
    flash[:logged_out] = "You have successfully logged out!"
    redirect '/'
 end
+
 
